@@ -321,10 +321,14 @@ h2.title{
 .cert-row{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;
   padding:17px 4px;border-bottom:1px solid var(--line);
+  transition:background .18s ease,padding-left .18s ease;
 }
 .cert-row:first-of-type{border-top:1px solid var(--line)}
+.cert-row[href]:hover{background:var(--accent-soft);padding-left:14px}
+.cert-row[href]:hover .cert-name{color:var(--accent)}
 .cert-name{font-weight:500;font-size:1rem}
 .cert-issuer{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:3px;display:block}
+.cert-id{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:3px;display:block;overflow-wrap:anywhere}
 .edu-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:30px 28px}
 .edu-card .school{font-family:var(--serif);font-size:1.5rem;font-weight:500;margin-bottom:8px}
 .edu-card .deg{color:var(--muted);font-size:1.02rem}
@@ -654,10 +658,10 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
     </div>
     <div class="two-col">
       <div class="reveal">
-        <div class="cert-row"><div><span class="cert-name">n8n Course: No Code AI Agent Builder</span><span class="cert-issuer">Simplilearn</span></div></div>
-        <div class="cert-row"><div><span class="cert-name">Automation Testing Basics</span><span class="cert-issuer">Simplilearn</span></div></div>
-        <div class="cert-row"><div><span class="cert-name">Software Quality Assurance</span><span class="cert-issuer">TestDome</span></div></div>
-        <div class="cert-row"><div><span class="cert-name">Introduction to Software Testing</span><span class="cert-issuer">Simplilearn</span></div></div>
+        <a class="cert-row" href="n8n-no-code-ai-agent-builder-cert.png" target="_blank" rel="noopener" title="Open certificate image"><div><span class="cert-name">n8n Course: No Code AI Agent Builder</span><span class="cert-issuer">Simplilearn · Issued Nov 2025</span><span class="cert-id">Credential ID 9318280</span></div><span class="tag">view ↗</span></a>
+        <a class="cert-row" href="automation-testing-basics-cert.png" target="_blank" rel="noopener" title="Open certificate image"><div><span class="cert-name">Automation Testing Basics</span><span class="cert-issuer">Simplilearn · Issued May 2025</span><span class="cert-id">Credential ID 8311818</span></div><span class="tag">view ↗</span></a>
+        <a class="cert-row" href="sqa-testdome-cert.png" target="_blank" rel="noopener" title="Open certificate image"><div><span class="cert-name">Software Quality Assurance</span><span class="cert-issuer">TestDome · Issued May 2025</span><span class="cert-id">Credential ID www.testdome.com/certificates/d9ced26e01e24f7598f29055f21ee171</span></div><span class="tag">view ↗</span></a>
+        <a class="cert-row" href="introduction-to-software-testing-cert.png" target="_blank" rel="noopener" title="Open certificate image"><div><span class="cert-name">Introduction to Software Testing</span><span class="cert-issuer">Simplilearn · Issued Feb 2025</span><span class="cert-id">Credential ID 7926895</span></div><span class="tag">view ↗</span></a>
       </div>
       <div class="edu-card reveal">
         <p class="sec-no" style="margin-bottom:12px">Education</p>
