@@ -241,17 +241,17 @@ h2.title{
 .sec-sub{color:var(--muted);margin-top:14px;font-size:1rem;max-width:56ch}
 
 /* ============ Experience timeline ============ */
-.timeline{position:relative;padding-left:2px}
+.timeline{position:relative}
 .role{
   display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:40px;
   padding:0 0 52px 0;position:relative;
 }
 .role:not(:last-child)::after{
-  content:"";position:absolute;left:7px;top:10px;bottom:0;width:1px;background:var(--line-2);
+  content:"";position:absolute;left:4px;top:10px;bottom:0;width:1px;background:var(--line-2);
 }
-.role-meta{position:relative}
+.role-meta{position:relative;padding-left:22px}
 .role-meta::before{
-  content:"";position:absolute;left:-2px;top:7px;width:9px;height:9px;border-radius:50%;
+  content:"";position:absolute;left:0;top:6px;width:9px;height:9px;border-radius:50%;
   background:var(--bg);border:2px solid var(--accent);
 }
 .role-dates{font-family:var(--mono);font-size:.78rem;color:var(--faint);letter-spacing:.04em;display:block;margin-bottom:10px}
@@ -358,7 +358,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
   .proj-grid,.two-col{grid-template-columns:1fr;gap:48px}
   .skill-grid{grid-template-columns:1fr 1fr}
   .role{grid-template-columns:1fr;gap:14px}
-  .role-meta{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+  .role-meta{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;padding-left:0}
   .role-meta::before{display:none}
   .role-loc{display:inline}
   .role:not(:last-child)::after{display:none}
