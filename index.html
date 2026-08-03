@@ -189,13 +189,13 @@ h1.display .dot{color:var(--accent)}
 .hero-links a:hover{color:var(--accent)}
 .hero-links a::before{content:"↳";color:var(--accent);font-size:.9rem}
 /* headshot viewfinder */
-.portrait-wrap{position:relative;max-width:300px;margin:0 auto;width:100%}
+.portrait-wrap{position:relative;max-width:250px;margin:0 auto;width:100%}
 .portrait-frame{
   position:relative;border:1px solid var(--line-2);border-radius:var(--r-md);
   padding:10px;background:var(--surface);box-shadow:var(--shadow);
 }
 .portrait-frame img{
-  width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;
+  width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;
   filter:saturate(.94) contrast(1.02);
 }
 /* corner ticks */
@@ -337,7 +337,7 @@ h2.title{
 
 /* ============ Contact ============ */
 .contact{border-top:1px solid var(--line);background:var(--bg-soft);padding-bottom:0}
-.contact-inner{padding:120px 0 90px;text-align:left}
+.contact-inner{padding-top:120px;padding-bottom:90px;text-align:left}
 .contact h2.title{font-size:clamp(2.4rem,5.4vw,4.2rem);max-width:16ch;line-height:1.05}
 .contact h2.title em{font-style:italic;color:var(--accent)}
 .contact-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
@@ -357,7 +357,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
 /* ============ Responsive ============ */
 @media (max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:56px}
-  .portrait-wrap{max-width:280px}
+  .portrait-wrap{max-width:220px}
   .proj-grid,.two-col{grid-template-columns:1fr;gap:48px}
   .skill-grid{grid-template-columns:1fr 1fr}
   .role{grid-template-columns:1fr;gap:14px}
@@ -374,7 +374,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
   .status span.txt{display:none}
   .skill-grid{grid-template-columns:1fr}
   .hero{padding-top:calc(var(--nav-h) + 48px)}
-  .contact-inner{padding:90px 0 70px}
+  .contact-inner{padding-top:90px;padding-bottom:70px}
   h1.display{font-size:clamp(2.6rem,12vw,3.4rem)}
   .cta-row .btn{flex:1 1 100%;justify-content:center}
 }
