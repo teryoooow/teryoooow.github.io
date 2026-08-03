@@ -283,6 +283,9 @@ h2.title{
   transition:background .18s ease,padding-left .18s ease;
 }
 .proj-row:hover{background:var(--accent-soft);padding-left:14px}
+.proj-row[href]::after{content:"↗";color:var(--faint);font-size:.85rem;transition:color .18s,transform .18s;align-self:center}
+.proj-row[href]:hover::after{color:var(--accent);transform:translate(2px,-2px)}
+.proj-row[href]:hover .proj-name{color:var(--accent)}
 .proj-name{font-weight:500;font-size:1.02rem}
 .proj-sub{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:3px;display:block}
 .tag{
@@ -428,7 +431,8 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
       <div class="hero-links">
         <a href="mailto:sarmientoterelle@gmail.com">sarmientoterelle@gmail.com</a>
         <a href="tel:+639750035937">0975 003 5937</a>
-        <a href="https://github.com/teryoooow" target="_blank" rel="noopener">github.com/teryoooow</a>
+        <a href="https://www.linkedin.com/in/terelle-sarmiento-a4b1bb143" target="_blank" rel="noopener">linkedin.com/in/terelle-sarmiento</a>
+        <a href="https://github.com/teryoooow?tab=repositories" target="_blank" rel="noopener">github.com/teryoooow</a>
       </div>
     </div>
     <div class="portrait-wrap reveal">
@@ -579,13 +583,27 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
         </div>
       </div>
       <div class="proj-col reveal">
-        <h3>Automation &amp; AI projects</h3>
+        <h3>QA Automation Projects</h3>
         <div class="proj-list">
-          <div class="proj-row"><div><span class="proj-name">BFP data extraction</span><span class="proj-sub">system data extraction automation with pagination</span></div><span class="tag auto">automation</span></div>
-          <div class="proj-row"><div><span class="proj-name">Uptime Detector</span><span class="proj-sub">service availability monitoring</span></div><span class="tag auto">automation</span></div>
-          <div class="proj-row"><div><span class="proj-name">WMS Excel Automation</span><span class="proj-sub">warehouse data consolidation</span></div><span class="tag auto">automation</span></div>
-          <div class="proj-row"><div><span class="proj-name">BFP Taguig App</span><span class="proj-sub">built with Lovable · Google Antigravity</span></div><span class="tag ai">AI</span></div>
-          <div class="proj-row"><div><span class="proj-name">BFP Pasig App</span><span class="proj-sub">built with Lovable · Google Antigravity</span></div><span class="tag ai">AI</span></div>
+          <a class="proj-row" href="https://github.com/teryoooow/appium-test" target="_blank" rel="noopener"><div><span class="proj-name">Appium Mobile Automation Framework</span><span class="proj-sub">Appium test automation for Android — functional validation &amp; automated regression testing</span></div><span class="tag auto">automation</span></a>
+          <a class="proj-row" href="https://github.com/teryoooow/rockygo-operator-cypress" target="_blank" rel="noopener"><div><span class="proj-name">RockyGo Operator Cypress Automation</span><span class="proj-sub">Cypress suite for RockyGo Operator — end-to-end workflows, regression &amp; UI validation</span></div><span class="tag auto">automation</span></a>
+          <a class="proj-row" href="https://github.com/teryoooow/cypress-test-projects" target="_blank" rel="noopener"><div><span class="proj-name">Cypress Test Projects Collection</span><span class="proj-sub">Cypress projects — UI testing, API validation, assertions &amp; automation best practices</span></div><span class="tag auto">automation</span></a>
+          <a class="proj-row" href="https://github.com/teryoooow/rockygo-restaurant-cypress" target="_blank" rel="noopener"><div><span class="proj-name">RockyGo Restaurant Cypress Automation</span><span class="proj-sub">End-to-end automation for the RockyGo Restaurant application using Cypress</span></div><span class="tag auto">automation</span></a>
+        </div>
+      </div>
+      <div class="proj-col reveal">
+        <h3>AI &amp; Automation Projects</h3>
+        <div class="proj-list">
+          <a class="proj-row" href="https://github.com/teryoooow/n8n-automation-merge-excel-attachments" target="_blank" rel="noopener"><div><span class="proj-name">n8n Excel Attachment Consolidation</span><span class="proj-sub">n8n workflow — merges email Excel attachments into a single workbook, no manual intervention</span></div><span class="tag ai">AI</span></a>
+          <a class="proj-row" href="https://gitfront.io/r/terelle05/q5fdhUcWPiiA/n8n-bfp-fsis-government-automation/" target="_blank" rel="noopener"><div><span class="proj-name">BFP FSIS Government Automation</span><span class="proj-sub">n8n automation for BFP FSIS — extracts &amp; monitors fire safety permit data from systems without export, enabling continuous reporting</span></div><span class="tag ai">AI</span></a>
+        </div>
+      </div>
+      <div class="proj-col reveal">
+        <h3>Mobile &amp; E2E Testing</h3>
+        <div class="proj-list">
+          <div class="proj-row"><div><span class="proj-name">BFP Pasig Connect Mobile App</span><span class="proj-sub">Mobile app for Pasig City Fire Station — incident reporting, hazard complaints, application guidance &amp; citizen engagement</span></div><span class="tag">mobile</span></div>
+          <a class="proj-row" href="https://github.com/teryoooow/rockygo-rider-e2e-maestro" target="_blank" rel="noopener"><div><span class="proj-name">RockyGo Rider E2E Maestro Tests</span><span class="proj-sub">Mobile end-to-end tests with Maestro for RockyGo Rider workflows</span></div><span class="tag auto">e2e</span></a>
+          <a class="proj-row" href="https://github.com/teryoooow/rockygo-e2e-maestro" target="_blank" rel="noopener"><div><span class="proj-name">RockyGo E2E Maestro Tests</span><span class="proj-sub">Cross-platform end-to-end framework with Maestro for RockyGo applications</span></div><span class="tag auto">e2e</span></a>
         </div>
       </div>
     </div>
@@ -664,7 +682,8 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
       <div class="contact-direct">
         <div><span class="lbl">Email</span><a href="mailto:sarmientoterelle@gmail.com">sarmientoterelle@gmail.com</a></div>
         <div><span class="lbl">Phone</span><a href="tel:+639750035937">0975 003 5937</a></div>
-        <div><span class="lbl">GitHub</span><a href="https://github.com/teryoooow" target="_blank" rel="noopener">github.com/teryoooow</a></div>
+        <div><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/terelle-sarmiento-a4b1bb143" target="_blank" rel="noopener">linkedin.com/in/terelle-sarmiento</a></div>
+        <div><span class="lbl">GitHub</span><a href="https://github.com/teryoooow?tab=repositories" target="_blank" rel="noopener">github.com/teryoooow</a></div>
       </div>
     </div>
   </div>
