@@ -1,0 +1,154 @@
+{
+  "name": "Webhook Intake — Validate & Route",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "intake",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-01",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-320, 0],
+      "webhookId": "webhook-intake-01"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Validate an incoming webhook payload before it touches any downstream system.\nconst item = $input.first().json;\nconst errors = [];\nif (!item.name || typeof item.name !== 'string') errors.push('missing or invalid: name');\nif (!item.email || !/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(item.email)) errors.push('missing or invalid: email');\nif (!item.source) errors.push('missing: source');\nreturn [{\n  json: {\n    valid: errors.length === 0,\n    errors: errors,\n    payload: item\n  }\n}];"
+      },
+      "id": "code-01",
+      "name": "Validate Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-120, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.valid }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      },
+      "id": "if-01",
+      "name": "Route",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [80, 0]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_GOOGLE_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": "Sheet1",
+        "columns": {
+          "name": "={{ $json.payload.name }}",
+          "email": "={{ $json.payload.email }}",
+          "source": "={{ $json.payload.source }}",
+          "received_at": "={{ $json.payload.received_at }}"
+        },
+        "options": {}
+      },
+      "id": "sheets-01",
+      "name": "Append to Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [280, -120],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_CREDENTIAL_ID",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "channel": "#intake-alerts",
+        "text": "=Invalid webhook payload rejected: {{ $json.errors.join(', ') }}"
+      },
+      "id": "slack-01",
+      "name": "Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [280, 120],
+      "credentials": {
+        "slackApi": {
+          "id": "REPLACE_WITH_SLACK_CREDENTIAL_ID",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Payload": {
+      "main": [
+        [
+          {
+            "node": "Route",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route": {
+      "main": [
+        [
+          {
+            "node": "Append to Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "practice-workflows"
+  }
+}

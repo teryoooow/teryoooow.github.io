@@ -1,0 +1,120 @@
+{
+  "name": "Scheduled API Poll → Transform → Store",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursBetween": 1
+            }
+          ]
+        }
+      },
+      "id": "schedule-01",
+      "name": "Every Hour",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-340, 0]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=15.1568&longitude=120.5851&current_weather=true",
+        "sendBody": false,
+        "sendHeaders": false,
+        "options": {}
+      },
+      "id": "http-01",
+      "name": "Fetch Weather (Open-Meteo)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-140, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Flatten the API response into a spreadsheet-ready row.\n// Pattern: transform at the boundary, keep downstream nodes dumb.\nconst data = $input.first().json;\nconst w = data.current_weather || {};\nreturn [{\n  json: {\n    recorded_at: new Date().toISOString(),\n    temperature_c: w.temperature,\n    windspeed_kmh: w.windspeed,\n    weather_code: w.weathercode,\n    source: 'open-meteo'\n  }\n}];"
+      },
+      "id": "code-02",
+      "name": "Format Row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [60, 0]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_GOOGLE_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": "Sheet1",
+        "columns": {
+          "recorded_at": "={{ $json.recorded_at }}",
+          "temperature_c": "={{ $json.temperature_c }}",
+          "windspeed_kmh": "={{ $json.windspeed_kmh }}",
+          "weather_code": "={{ $json.weather_code }}",
+          "source": "={{ $json.source }}"
+        },
+        "options": {}
+      },
+      "id": "sheets-02",
+      "name": "Append to Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [260, 0],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_CREDENTIAL_ID",
+          "name": "Google account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every Hour": {
+      "main": [
+        [
+          {
+            "node": "Fetch Weather (Open-Meteo)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Weather (Open-Meteo)": {
+      "main": [
+        [
+          {
+            "node": "Format Row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Row": {
+      "main": [
+        [
+          {
+            "node": "Append to Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "practice-workflows"
+  }
+}

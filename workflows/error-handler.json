@@ -1,0 +1,136 @@
+{
+  "name": "Error Handler — Format & Route Alerts",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "err-01",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1.1,
+      "position": [-340, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Error workflows receive the failing execution's context.\n// Pattern: normalize the error into one alert shape, then branch on severity.\nconst e = $input.first().json;\nconst nodeName = (e.error && e.error.node && e.error.node.name) || 'unknown node';\nconst message = (e.error && e.error.message) || 'unknown error';\nconst isHttp = (e.error && e.error.node && e.error.node.type || '').includes('httpRequest');\nreturn [{\n  json: {\n    severity: isHttp ? 'critical' : 'info',\n    text: '⚠️ Workflow \"' + (e.workflow && e.workflow.name || 'unknown') + '\" failed at \"' + nodeName + '\": ' + message\n  }\n}];"
+      },
+      "id": "code-03",
+      "name": "Format Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-140, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.severity }}",
+              "rightValue": "critical",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      },
+      "id": "if-02",
+      "name": "Severity",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [60, 0]
+    },
+    {
+      "parameters": {
+        "channel": "#critical",
+        "text": "={{ $json.text }}"
+      },
+      "id": "slack-02",
+      "name": "Critical Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [260, -120],
+      "credentials": {
+        "slackApi": {
+          "id": "REPLACE_WITH_SLACK_CREDENTIAL_ID",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "channel": "#errors",
+        "text": "={{ $json.text }}"
+      },
+      "id": "slack-03",
+      "name": "Info Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [260, 120],
+      "credentials": {
+        "slackApi": {
+          "id": "REPLACE_WITH_SLACK_CREDENTIAL_ID",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Format Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Error": {
+      "main": [
+        [
+          {
+            "node": "Severity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Severity": {
+      "main": [
+        [
+          {
+            "node": "Critical Alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Info Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "practice-workflows"
+  }
+}

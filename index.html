@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terelle Sarmiento — QA Engineer</title>
-<meta name="description" content="Terelle Sarmiento — QA Engineer specializing in mobile & web testing, test automation (Cypress, Appium, Maestro) and performance testing (k6, Grafana).">
+<title>Terelle Sarmiento — Automation Engineer</title>
+<meta name="description" content="Terelle Sarmiento — Automation engineer focused on n8n workflow automation, with a QA foundation in mobile & web testing, test automation (Cypress, Appium, Maestro) and performance testing (k6, Grafana).">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0C0B'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%23AEE95C' text-anchor='middle'%3ETS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -286,6 +286,14 @@ h2.title{
 .proj-row[href]::after{content:"↗";color:var(--faint);font-size:.85rem;transition:color .18s,transform .18s;align-self:center}
 .proj-row[href]:hover::after{color:var(--accent);transform:translate(2px,-2px)}
 .proj-row[href]:hover .proj-name{color:var(--accent)}
+.practice{margin-top:72px}
+.practice h3{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.practice h3::before{content:"";width:18px;height:1px;background:var(--accent)}
+.practice-note{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-bottom:18px}
+.case-study{margin-top:10px;border:1px solid var(--line-2);border-radius:var(--r-md);background:var(--accent-soft);padding:14px 16px 12px}
+.case-study .cs-lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
+.cs-item{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:.85rem;color:var(--muted);padding:4px 0;align-items:baseline}
+.cs-item .cs-k{font-family:var(--mono);font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
 .proj-name{font-weight:500;font-size:1.02rem}
 .proj-sub{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:3px;display:block}
 .tag{
@@ -315,6 +323,10 @@ h2.title{
   transition:color .18s,border-color .18s,background .18s;
 }
 .chip:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.skill-note{font-family:var(--mono);font-size:.72rem;color:var(--faint);line-height:1.6;margin-top:14px}
+.skill-note b{color:var(--accent);font-weight:500}
+.skill-note.next{margin-top:24px;padding:10px 14px;border:1px solid var(--line-2);border-radius:var(--r-sm);background:var(--accent-soft);color:var(--muted)}
+.skill-note.next::before{content:"→ ";color:var(--accent)}
 
 /* ============ Certs + Education ============ */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
@@ -419,14 +431,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
 <header class="hero">
   <div class="container hero-grid">
     <div>
-      <p class="kicker">Automation - QA Engineer — Mobile &amp; Web</p>
+      <p class="kicker">Automation Engineer — n8n Workflows &amp; Process Automation</p>
       <h1 class="display">Terelle<br>Sarmiento<span class="dot">.</span></h1>
-      <p class="role-line">Test Automation <b>·</b> Performance testing <b>·</b> Mobile &amp; Web QA <b>·</b> AI Automation</p>
+      <p class="role-line">n8n Workflows &amp; Process Automation <b>·</b> Test Automation <b>·</b> Mobile &amp; Web QA <b>·</b> AI Automation</p>
       <p class="hero-summary">
-        QA engineer with hands-on experience testing mobile and web applications — including
-        RFID-integrated systems — and practical depth in test automation (Cypress, Appium, Maestro),
-        workflow automation (n8n, Docker), and server performance validation (k6, Grafana). I design
-        test cases, hunt defects, and build tooling that makes quality the default, not the exception.
+        Automation engineer focused on n8n workflows and process automation, with a QA foundation
+        testing mobile and web applications — including RFID-integrated systems. Practical depth in
+        workflow automation (n8n, Docker), test automation (Cypress, Appium, Maestro), and server
+        performance validation (k6, Grafana). I build automation that removes repetitive work — then
+        hunt the defects left behind.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="Terelle_Sarmiento_Resume_2026.pdf" download>Download résumé ↓</a>
@@ -600,6 +613,13 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
         <div class="proj-list">
           <a class="proj-row" href="https://github.com/teryoooow/n8n-automation-merge-excel-attachments" target="_blank" rel="noopener"><div><span class="proj-name">n8n Excel Attachment Consolidation</span><span class="proj-sub">n8n workflow — merges email Excel attachments into a single workbook, no manual intervention</span></div><span class="tag ai">AI</span></a>
           <a class="proj-row" href="https://gitfront.io/r/terelle05/q5fdhUcWPiiA/n8n-bfp-fsis-government-automation/" target="_blank" rel="noopener"><div><span class="proj-name">BFP FSIS Government Automation</span><span class="proj-sub">n8n automation for BFP FSIS — extracts &amp; monitors fire safety permit data from systems without export, enabling continuous reporting</span></div><span class="tag ai">AI</span></a>
+          <div class="case-study">
+            <span class="cs-lbl">Case study — the automation problem</span>
+            <div class="cs-item"><span class="cs-k">Problem</span><span>Fire safety permit data lives in BFP FSIS systems with no export function and no public API — manual collection was slow and easy to miss.</span></div>
+            <div class="cs-item"><span class="cs-k">Approach</span><span>An n8n workflow on a schedule drives extraction page-by-page, handles pagination, normalizes the records, and stores them for monitoring and reporting.</span></div>
+            <div class="cs-item"><span class="cs-k">Friction handled</span><span>No export or API → extraction had to be built against what the system exposes; pagination and scheduling keep it running unattended; failures surface so collection gaps aren't silent.</span></div>
+            <div class="cs-item"><span class="cs-k">Outcome</span><span>Continuous, unattended collection and reporting of permit data — manual effort removed, monitoring runs itself.</span></div>
+          </div>
         </div>
       </div>
       <div class="proj-col reveal">
@@ -609,6 +629,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
           <a class="proj-row" href="https://github.com/teryoooow/rockygo-rider-e2e-maestro" target="_blank" rel="noopener"><div><span class="proj-name">RockyGo Rider E2E Maestro Tests</span><span class="proj-sub">Mobile end-to-end tests with Maestro for RockyGo Rider workflows</span></div><span class="tag auto">e2e</span></a>
           <a class="proj-row" href="https://github.com/teryoooow/rockygo-e2e-maestro" target="_blank" rel="noopener"><div><span class="proj-name">RockyGo E2E Maestro Tests</span><span class="proj-sub">Cross-platform end-to-end framework with Maestro for RockyGo applications</span></div><span class="tag auto">e2e</span></a>
         </div>
+      </div>
+    </div>
+    <div class="practice reveal">
+      <h3>n8n Practice Workflows</h3>
+      <p class="practice-note">Personal practice builds for demoing workflow-architecture patterns — import-ready for n8n, credentials to configure. Not client work.</p>
+      <div class="proj-list">
+        <a class="proj-row" href="workflows/webhook-intake.json" target="_blank" rel="noopener"><div><span class="proj-name">Webhook Intake → Validate → Route</span><span class="proj-sub">webhook → Code-node validation → branch on validity → Google Sheets append → Slack alert on failure</span></div><span class="tag auto">practice</span></a>
+        <a class="proj-row" href="workflows/scheduled-api-to-sheet.json" target="_blank" rel="noopener"><div><span class="proj-name">Scheduled API Poll → Transform → Store</span><span class="proj-sub">hourly schedule → HTTP Request (Open-Meteo, no key) → Code-node transform → Google Sheets append</span></div><span class="tag auto">practice</span></a>
+        <a class="proj-row" href="workflows/error-handler.json" target="_blank" rel="noopener"><div><span class="proj-name">Error Handler → Format → Route Alerts</span><span class="proj-sub">error trigger → normalize failure → branch on severity → route to alert channels</span></div><span class="tag auto">practice</span></a>
       </div>
     </div>
   </div>
@@ -637,15 +666,17 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
           <span class="chip">Cypress</span><span class="chip">Playwright</span><span class="chip">Maestro</span><span class="chip">Appium</span>
           <span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">k6</span><span class="chip">Grafana</span><span class="chip">n8n</span><span class="chip">Docker</span>
         </div>
+        <p class="skill-note">n8n depth: <b>webhooks</b> · <b>HTTP Request</b> · <b>scheduled triggers</b> · <b>Excel &amp; file processing</b> · <b>error workflows</b> · <b>credentials (OAuth/API keys)</b></p>
       </div>
       <div class="skill-card reveal">
         <h3>Tools &amp; Workflow</h3>
         <div class="chips">
           <span class="chip">GitHub</span><span class="chip">CI/CD</span><span class="chip">Agile / Scrum</span><span class="chip">Kanban</span>
-          <span class="chip">VS Code</span><span class="chip">Cursor IDE</span><span class="chip">Opencode AI</span><span class="chip">Hermes</span><span class="chip">DeepSeek</span><span class="chip">Gemini</span><span class="chip">Claude</span><span class="chip">ChatGPT</span>
+          <span class="chip">VS Code</span><span class="chip">Cursor IDE</span><span class="chip">Opencode AI</span><span class="chip">AI-assisted development (Claude, ChatGPT)</span>
         </div>
       </div>
     </div>
+    <p class="skill-note next">Currently building LLM-API integration into n8n workflows — turning AI-assisted development into AI-powered workflows.</p>
   </div>
 </section>
 
