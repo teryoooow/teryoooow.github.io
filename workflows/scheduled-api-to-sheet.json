@@ -16,7 +16,10 @@
       "name": "Every Hour",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [-340, 0]
+      "position": [
+        -340,
+        0
+      ]
     },
     {
       "parameters": {
@@ -30,7 +33,10 @@
       "name": "Fetch Weather (Open-Meteo)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-140, 0]
+      "position": [
+        -140,
+        0
+      ]
     },
     {
       "parameters": {
@@ -40,7 +46,10 @@
       "name": "Format Row",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [60, 0]
+      "position": [
+        60,
+        0
+      ]
     },
     {
       "parameters": {
@@ -64,7 +73,10 @@
       "name": "Append to Sheet",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
-      "position": [260, 0],
+      "position": [
+        260,
+        0
+      ],
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "REPLACE_WITH_GOOGLE_CREDENTIAL_ID",
@@ -116,5 +128,6 @@
   "meta": {
     "templateCredsSetupCompleted": false,
     "instanceId": "practice-workflows"
-  }
+  },
+  "id": "1002"
 }

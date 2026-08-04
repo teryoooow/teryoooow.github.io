@@ -12,7 +12,10 @@
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [-320, 0],
+      "position": [
+        -320,
+        0
+      ],
       "webhookId": "webhook-intake-01"
     },
     {
@@ -23,7 +26,10 @@
       "name": "Validate Payload",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-120, 0]
+      "position": [
+        -120,
+        0
+      ]
     },
     {
       "parameters": {
@@ -51,7 +57,10 @@
       "name": "Route",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
-      "position": [80, 0]
+      "position": [
+        80,
+        0
+      ]
     },
     {
       "parameters": {
@@ -74,7 +83,10 @@
       "name": "Append to Sheet",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
-      "position": [280, -120],
+      "position": [
+        280,
+        -120
+      ],
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "REPLACE_WITH_GOOGLE_CREDENTIAL_ID",
@@ -91,7 +103,10 @@
       "name": "Alert",
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2,
-      "position": [280, 120],
+      "position": [
+        280,
+        120
+      ],
       "credentials": {
         "slackApi": {
           "id": "REPLACE_WITH_SLACK_CREDENTIAL_ID",
@@ -150,5 +165,6 @@
   "meta": {
     "templateCredsSetupCompleted": false,
     "instanceId": "practice-workflows"
-  }
+  },
+  "id": "1001"
 }
