@@ -290,10 +290,16 @@ h2.title{
 .practice h3{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .practice h3::before{content:"";width:18px;height:1px;background:var(--accent)}
 .practice-note{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-bottom:18px}
-.case-study{margin-top:10px;border:1px solid var(--line-2);border-radius:var(--r-md);background:var(--accent-soft);padding:14px 16px 12px}
-.case-study .cs-lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
-.cs-item{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:.85rem;color:var(--muted);padding:4px 0;align-items:baseline}
+.cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.case-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:26px 26px 20px;transition:border-color .2s,transform .2s}
+.case-card:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.cc-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.cc-head h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:6px 0 4px;letter-spacing:-.01em}
+.cc-link{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:inline-block;margin-bottom:12px}
+.cc-link:hover{color:var(--accent)}
+.cs-item{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:.85rem;color:var(--muted);padding:5px 0;align-items:baseline}
 .cs-item .cs-k{font-family:var(--mono);font-size:.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:960px){.cs-grid{grid-template-columns:1fr}}
 .proj-name{font-weight:500;font-size:1.02rem}
 .proj-sub{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:3px;display:block}
 .tag{
@@ -407,6 +413,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
     <div class="nav-links">
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#case-studies">Case Studies</a>
       <a href="#skills">Skills</a>
       <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
@@ -421,6 +428,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
 <div class="mobile-menu" id="mobileMenu">
   <a href="#experience">Experience</a>
   <a href="#projects">Projects</a>
+  <a href="#case-studies">Case Studies</a>
   <a href="#skills">Skills</a>
   <a href="#certifications">Certifications</a>
   <a href="#contact">Contact</a>
@@ -613,13 +621,6 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
         <div class="proj-list">
           <a class="proj-row" href="https://github.com/teryoooow/n8n-automation-merge-excel-attachments" target="_blank" rel="noopener"><div><span class="proj-name">n8n Excel Attachment Consolidation</span><span class="proj-sub">n8n workflow — merges email Excel attachments into a single workbook, no manual intervention</span></div><span class="tag ai">AI</span></a>
           <a class="proj-row" href="https://gitfront.io/r/terelle05/q5fdhUcWPiiA/n8n-bfp-fsis-government-automation/" target="_blank" rel="noopener"><div><span class="proj-name">BFP FSIS Government Automation</span><span class="proj-sub">n8n automation for BFP FSIS — extracts &amp; monitors fire safety permit data from systems without export, enabling continuous reporting</span></div><span class="tag ai">AI</span></a>
-          <div class="case-study">
-            <span class="cs-lbl">Case study — the automation problem</span>
-            <div class="cs-item"><span class="cs-k">Problem</span><span>Fire safety permit data lives in BFP FSIS systems with no export function and no public API — manual collection was slow and easy to miss.</span></div>
-            <div class="cs-item"><span class="cs-k">Approach</span><span>An n8n workflow on a schedule drives extraction page-by-page, handles pagination, normalizes the records, and stores them for monitoring and reporting.</span></div>
-            <div class="cs-item"><span class="cs-k">Friction handled</span><span>No export or API → extraction had to be built against what the system exposes; pagination and scheduling keep it running unattended; failures surface so collection gaps aren't silent.</span></div>
-            <div class="cs-item"><span class="cs-k">Outcome</span><span>Continuous, unattended collection and reporting of permit data — manual effort removed, monitoring runs itself.</span></div>
-          </div>
         </div>
       </div>
       <div class="proj-col reveal">
@@ -643,11 +644,50 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
   </div>
 </section>
 
+<!-- ============ CASE STUDIES ============ -->
+<section id="case-studies">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-no">03 / Case Studies</p>
+      <h2 class="title">Automation problems, solved.</h2>
+      <p class="sec-sub">Real automation challenges — what the system wouldn't do, how the workflow handled it, and what it unlocked.</p>
+    </div>
+    <div class="cs-grid">
+      <article class="case-card reveal">
+        <div class="cc-head">
+          <span class="cc-tag">Case Study 01 — n8n</span>
+          <h3>Excel Attachment Consolidation</h3>
+          <a class="cc-link" href="https://github.com/teryoooow/n8n-automation-merge-excel-attachments" target="_blank" rel="noopener">view repository ↗</a>
+        </div>
+        <div class="cc-body">
+          <div class="cs-item"><span class="cs-k">Problem</span><span>Consolidated data arrives as Excel files attached to email — merging several files into one workbook by hand was repetitive and error-prone.</span></div>
+          <div class="cs-item"><span class="cs-k">Approach</span><span>An n8n workflow retrieves the incoming email attachments, merges the Excel files into a single workbook, and delivers the consolidated output.</span></div>
+          <div class="cs-item"><span class="cs-k">Friction handled</span><span>Attachments arrive by email on their own schedule — the workflow collects and merges them unattended, so the output never waits on someone to run it.</span></div>
+          <div class="cs-item"><span class="cs-k">Outcome</span><span>One consolidated workbook, delivered automatically — manual intervention removed.</span></div>
+        </div>
+      </article>
+      <article class="case-card reveal">
+        <div class="cc-head">
+          <span class="cc-tag">Case Study 02 — n8n</span>
+          <h3>BFP FSIS Government Automation</h3>
+          <a class="cc-link" href="https://gitfront.io/r/terelle05/q5fdhUcWPiiA/n8n-bfp-fsis-government-automation/" target="_blank" rel="noopener">view repository ↗</a>
+        </div>
+        <div class="cc-body">
+          <div class="cs-item"><span class="cs-k">Problem</span><span>Fire safety permit data lives in BFP FSIS systems with no export function and no public API — manual collection was slow and easy to miss.</span></div>
+          <div class="cs-item"><span class="cs-k">Approach</span><span>An n8n workflow on a schedule drives extraction page-by-page, handles pagination, normalizes the records, and stores them for monitoring and reporting.</span></div>
+          <div class="cs-item"><span class="cs-k">Friction handled</span><span>No export or API → extraction had to be built against what the system exposes; pagination and scheduling keep it running unattended; failures surface so collection gaps aren't silent.</span></div>
+          <div class="cs-item"><span class="cs-k">Outcome</span><span>Continuous, unattended collection and reporting of permit data — manual effort removed, monitoring runs itself.</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ SKILLS ============ -->
 <section id="skills">
   <div class="container">
     <div class="sec-head reveal">
-      <p class="sec-no">03 / Skills</p>
+      <p class="sec-no">04 / Skills</p>
       <h2 class="title">The toolkit.</h2>
       <p class="sec-sub">Test strategy, automation, performance, and the workflow glue that ties it together.</p>
     </div>
@@ -684,7 +724,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
 <section id="certifications">
   <div class="container">
     <div class="sec-head reveal">
-      <p class="sec-no">04 / Certifications &amp; Education</p>
+      <p class="sec-no">05 / Certifications &amp; Education</p>
       <h2 class="title">Proof of work.</h2>
     </div>
     <div class="two-col">
@@ -708,7 +748,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
 <section class="contact" id="contact">
   <div class="container contact-inner">
     <div class="reveal">
-      <p class="sec-no">05 / Contact</p>
+      <p class="sec-no">06 / Contact</p>
       <h2 class="title">Let's make quality<br>the <em>default</em>.</h2>
       <div class="contact-actions">
         <a class="btn btn-primary" href="mailto:sarmientoterelle@gmail.com">Email me →</a>
