@@ -401,6 +401,16 @@ footer{border-top:1px solid var(--line);padding:26px 0;background:var(--bg)}
   .cta-row .btn{flex:1 1 100%;justify-content:center}
 }
 </style>
+<!-- GoatCounter analytics (privacy-friendly, no cookie banner) -->
+<script data-goatcounter="https://terelle.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+  // Count résumé downloads as a GoatCounter event
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href$=".pdf"]') : null;
+    if (a && window.goatcounter) goatcounter.count({ event: true, path: '/downloads/resume' });
+  });
+</script>
 </head>
 <body data-theme="dark">
 
