@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404 — Page not found</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// Graceful redirect for GitHub Pages (no SPA fallback): deep links into the
+// BFP app previews bounce to the app home instead of a dead page.
+(function () {
+  var p = window.location.pathname;
+  if (p.indexOf('/bfp-pasig-app/') === 0) { window.location.replace('/bfp-pasig-app/'); return; }
+  if (p.indexOf('/bfp-taguig-app/') === 0) { window.location.replace('/bfp-taguig-app/'); return; }
+  document.body.innerHTML = '<div style="font-family:monospace;max-width:480px;margin:96px auto;padding:0 24px;color:#1a1d1a">' +
+    '<h1 style="font-size:1.4rem">404 — page not found</h1>' +
+    '<p style="line-height:1.6"><a href="/" style="color:#3f6b0e">← Back to home</a></p></div>';
+})();
+</script>
+</head>
+<body></body>
+</html>
